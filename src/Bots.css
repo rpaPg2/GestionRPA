@@ -11,6 +11,22 @@
   border-radius: 8px; /* Bordes redondeados */
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Sombra para el contenedor */
   margin-left: 30%;
+
+  opacity: 0; /* Comienza oculto */
+  transform: translateY(30px); /* Desplazado hacia abajo */
+  animation: fadeInUp 1s forwards ease-in-out; /* Aplicamos la animación */
+}
+
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px); /* Comienza desplazado hacia abajo */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0); /* Finaliza en su posición original */
+  }
 }
 
 /* Título */

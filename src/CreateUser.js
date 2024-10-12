@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import './CreateUser.css';
 
 const CreateUser = () => {
+  const apiUrl = process.env.REACT_APP_API_URL;
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [role, setRole] = useState('user'); // Valor por defecto
@@ -13,7 +14,8 @@ const CreateUser = () => {
   const [usuarios, setUsuarios] = useState([]); // Estado para los usuarios
   const [filter, setFilter] = useState(''); // Filtro de búsqueda
   const [currentPage, setCurrentPage] = useState(1); // Página actual
-  const [usersPerPage] = useState(10); // Usuarios por página
+  const [usersPerPage] = useState(5); // Usuarios por página
+  const [notification, setNotification] = useState(''); // Estado para la notificación
 
   const navigate = useNavigate(); // Hook para manejar la navegación
 
@@ -23,7 +25,7 @@ const CreateUser = () => {
 
     try {
       // Enviar los datos a la API para crear el usuario
-      await axios.post('http://localhost:5000/api/usuarios-crear', {
+      await axios.post(`${apiUrl}api/usuarios-crear`, {
         username,
         password,
         role,
@@ -40,6 +42,10 @@ const CreateUser = () => {
       setNombre('');
       setPosicion('');
       fetchUsuarios(); // Cargar la lista de usuarios después de crear uno nuevo
+
+      // Mostrar notificación
+      setNotification('Usuario creado exitosamente. No olvide asignar bots.'); // Mensaje de éxito
+      setTimeout(() => setNotification(''), 5000); // Limpiar la notificación después de 5 segundos
     } catch (error) {
       console.error('Error al crear usuario:', error);
     }
@@ -49,7 +55,7 @@ const CreateUser = () => {
   const fetchUsuarios = async () => {
     try {
       // Usar la ruta de listar usuarios
-      const response = await axios.get('http://localhost:5000/api/listar-tabla-user');
+      const response = await axios.get(`${apiUrl}api/listar-tabla-user`);
       setUsuarios(response.data);
     } catch (error) {
       console.error('Error al cargar usuarios:', error);
@@ -83,7 +89,7 @@ const CreateUser = () => {
     <div className="create-user-container">
       <button 
         onClick={() => navigate('/admin/usuarios')} 
-        className="button regresar-button"
+        className="button-regresar-button"
       >
         Regresar
       </button>
@@ -91,12 +97,16 @@ const CreateUser = () => {
         <h2 style={{ display: 'inline', marginLeft: '270px' }}>Crear Usuario</h2>
       </div>
 
+      {/* Notificación */}
+      {notification && <div className="notification">{notification}</div>}
+
       <form onSubmit={handleSubmit}>
         <table>
           <tbody>
             <tr>
               <td><input
                 type="text"
+                className='username-usuario'
                 placeholder="Username"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
@@ -137,7 +147,7 @@ const CreateUser = () => {
                 required
               /></td>
               <td>
-                <button type="submit" className="button create-user-button">Crear Usuario</button>
+                <button type="submit" className="button-create-user-button">Crear Usuario</button>
               </td>
             </tr>
           </tbody>
@@ -145,14 +155,15 @@ const CreateUser = () => {
       </form>
 
       {/* Campo de búsqueda */}
-      <div> <input
-        type="text"
-        style={{ width: '100%' }}
-        placeholder="Buscar por Username o Código Empleado"
-        value={filter}
-        onChange={(e) => setFilter(e.target.value)}
-      />
-        </div>
+      <div className='Filtro-usr-codemp'>
+        <input 
+          type="text"
+          placeholder="Buscar User/CódEmp"
+          value={filter}
+          onChange={(e) => setFilter(e.target.value)}
+        />
+      </div>
+
       {/* Listado de usuarios creados */}
       <h3>Usuarios Creados</h3>
       <table className="user-table">
@@ -178,9 +189,8 @@ const CreateUser = () => {
               <td>{user.nombre}</td>
               <td>{user.posicion}</td>
               <td>{user.bots}</td>
-              <td>
-              <button onClick={() => navigate(`/edit-user?id=${user.id}`)}>Editar</button>
-
+              <td>   
+                <button onClick={() => navigate(`/edit-user?id=${user.id}`)} className='edit-button'>Editar</button>
               </td>
             </tr>
           ))}
@@ -200,4 +210,3 @@ const CreateUser = () => {
 };
 
 export default CreateUser;
-

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './UserSettings.css';
 
 const UserSettings = () => {
+  const apiUrl = process.env.REACT_APP_API_URL;
   const [userInfo, setUserInfo] = useState(null);
   const [newPassword, setNewPassword] = useState('');
   const [isEditingPassword, setIsEditingPassword] = useState(false);
@@ -12,9 +13,10 @@ const UserSettings = () => {
   const userId = sessionStorage.getItem('userId');
 
   useEffect(() => {
+   
     const fetchUserInfo = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/api/user-info?userId=${userId}`);
+        const response = await fetch(`${apiUrl}api/user-info?userId=${userId}`);
         if (response.ok) {
           const data = await response.json();
           setUserInfo(data);
@@ -46,7 +48,7 @@ const UserSettings = () => {
     setIsButtonDisabled(true); // Desactivar el botón mientras se procesa la solicitud
 
     try {
-      const response = await fetch(`http://localhost:5000/api/change-password`, {
+      const response = await fetch(`${apiUrl}api/change-password`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -136,12 +138,12 @@ const UserSettings = () => {
                 readOnly={!isEditingPassword}
                 style={{ width: '100%', padding: '10px', boxSizing: 'border-box' }}
               />
-              <label style={{ display: 'flex', alignItems: 'center', marginTop: '-40px', fontSize: '0.6em' }}>
+              <label style={{ display: 'flex', alignItems: 'center', marginTop: '-20px', fontSize: '0.7em' }}>
                 <input
                   type="checkbox"
                   checked={showPassword}
                   onChange={() => setShowPassword(!showPassword)}
-                  style={{ marginRight: '0px' }} // Espacio entre el checkbox y el texto
+                  style={{ marginRight: '10px' }} // Espacio entre el checkbox y el texto
                 />
                 Ver Contraseña
               </label>

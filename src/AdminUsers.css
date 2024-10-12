@@ -1,42 +1,81 @@
-.user-settings-container {
+.admin-user-container {
   display: flex;
-  flex-direction: column; /* Colocar el título y las opciones en columna */
-  align-items: center; /* Centrar horizontalmente */
-  justify-content: flex-start; /* Alinear hacia arriba */
-  height: 40vh; /* Ocupa toda la altura de la ventana */
-  background-color: #f8f6f6; /* Color de fondo gris claro */
-  padding: 10px; /* Espaciado alrededor */
-  margin-left: 60%;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Sombra para dar efecto de profundidad */
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: 40vh;
+  background-color: #f8f6f6;
+  padding: 15px;
+  margin-left: 40%;
+  margin-top: 25%;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  
+  opacity: 0; /* Comienza oculto */
+  transform: translateY(30px); /* Desplazado hacia abajo */
+  animation: fadeInUp 1s forwards ease-in-out; /* Aplicamos la animación */
 }
 
-.menu-titleAdmon {
-  font-size: 2.5em; /* Tamaño del título */
-  color: #4a2c91; /* Color del título */
-  margin-bottom: 30px; /* Espaciado debajo del título */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px); /* Comienza desplazado hacia abajo */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0); /* Finaliza en su posición original */
+  }
 }
+
+
+.menu-titleAdmon {
+  font-size: 2.0em; /* Tamaño del título */
+  color: #4a2c91; /* Color del título */
+  margin-bottom: 60px; /* Espaciado debajo del título */
+  opacity: 0; /* Comenzamos ocultando el título */
+  transform: translateY(20px); /* Desplazamos el título hacia abajo */
+  animation: slideIn 1s forwards; /* Llamamos a la animación */
+}
+
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px); /* Comienza desde abajo */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0); /* Termina en su posición original */
+  }
+}
+
 
 .menu-options {
   display: flex; /* Alinear los elementos en fila */
-  gap: 20px; /* Espacio entre los elementos */
-  padding: 20px; /* Espacio alrededor del menú */
+  gap: 50px; /* Espacio entre los elementos */
+  padding: 10px; /* Espacio alrededor del menú */
   background-color: #e6e6e6; /* Fondo blanco para el contenedor del menú */
   border-radius: 15px; /* Bordes redondeados para el menú */
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Sombra para dar efecto de profundidad */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4); /* Sombra para dar efecto de profundidad */
+  transition: all 0.5s ease;
+
+  
 }
 
 .menu-option {
   background-color: #2c913d; /* Color de fondo de las opciones */
   color: white; /* Color del texto */
-  padding: 15px 25px; /* Espaciado interno */
+  padding: 15px 15px; /* Espaciado interno */
   border-radius: 8px; /* Bordes redondeados */
   cursor: pointer; /* Cambiar cursor al pasar sobre el elemento */
   transition: background-color 0.3s, transform 0.2s; /* Transición suave para el color de fondo y transformación */
   text-align: center; /* Centrar texto */
   font-size: 1.2em; /* Tamaño del texto */
+  width: 200px; /* Ancho del botón */
+  height: 30px; /* Altura del botón */
+
 }
 
 .menu-option:hover {
   background-color: #6f5e9e; /* Color de fondo al pasar el mouse */
-  transform: scale(1.05); /* Efecto de aumento al pasar el mouse */
+  transform: scale(1.07); /* Efecto de aumento al pasar el mouse */
 }
+

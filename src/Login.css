@@ -1,46 +1,99 @@
-body {
-    /* Cambia la altura a min-height para permitir más flexibilidad */
-    display: flex; /* Usar flexbox para centrar el contenido */
-    align-items: center; /* Centra verticalmente */
-    
+.login-page {
+    height: 10vh; 
+    min-height: 90vh; 
+    display: flex; 
+    justify-content: flex-end; 
+    align-items: center; 
+    /* overflow: hidden; */ /* Eliminado */
+    background-image: url('./assets/Imagenes/2\ RPA.jpg'); 
+    background-size: cover; 
+    background-position: center; 
+    animation: slide 25s linear infinite; 
+    margin-left: 550px; 
+    padding-right: 170px; 
+    padding-left: 170px; 
+    margin-top: 50px; 
 }
 
 .login-container {
-    background-color: #5e387e; /* Color de fondo del contenedor */
-    padding: 80px; /* Reduce el espaciado interno del contenedor */
-    border-radius: 50px; /* Bordes redondeados */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 1); /* Sombra sutil */
-    max-width: 500px; /* Ancho máximo (puedes ajustar esto) */
-    height: 500px;
-    color: white; /* Color del texto */
-    position: relative; /* Posicionamiento absoluto */
-   
-    left: 200%; /* Mueve el contenedor hacia el centro horizontalmente */
+    min-height: 50vh;
+    background-color: rgba(94, 56, 126, 0.9); 
+    padding: 40px; 
+    border-radius: 20px; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); 
+    max-width: 450px; 
+    color: white; 
+    position: relative; 
+    padding-right: 55px; 
+    padding-left: 55px; 
+    z-index: 1;
+}
+
+.login-container::before {
+    content: '';
+    position: absolute; 
+    top: -10px; 
+    left: -10px; 
+    right: -10px; 
+    bottom: -10px; 
+    border: 2px solid white; 
+    border-radius: 25px; 
+    z-index: -1; /* Asegúrate de que este valor sea menor */
+}
+
+@keyframes slide {
+    0% {
+        background-position: left;
+    }
+    50% {
+        background-position: right; 
+    }
+    100% {
+        background-position: left; 
+    }
+}
+
+h2 {
+    text-align: center; 
+    font-size: 2em; 
+    margin-bottom: 20px; 
 }
 
 input {
-    display: block; /* Para que los inputs estén en líneas separadas */
-    width: 100%; /* Para que los inputs ocupen todo el ancho del contenedor */
-    padding: 10px; /* Espaciado interno */
-    margin: 35px 0; /* Margen entre los inputs (ajustado) */
-    border: 5px solid #ddd; /* Borde de los inputs */
-    border-radius: 5px; /* Bordes redondeados para los inputs */
+    display: block; 
+    width: 100%; 
+    padding: 10px; 
+    margin: 15px 0; 
+    border: 2px solid #ddd; 
+    border-radius: 5px; 
+    transition: border 0.3s; 
+}
+
+input:focus {
+    border-color: #6fc28e; 
 }
 
 button {
-    background-color: #6fc28e; /* Color de fondo del botón */
-    color: white; /* Color del texto del botón */
-    padding: 10px; /* Espaciado interno del botón */
-    border: none; /* Sin borde */
-    border-radius: 5px; /* Bordes redondeados para el botón */
-    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
-    width: 95%; /* Botón ocupa todo el ancho */
+    background-color: #6fc28e; 
+    color: white; 
+    padding: 10px; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    width: 100%; 
+    transition: background-color 0.3s; 
 }
 
 button:hover {
-    background-color: #528d94; /* Color de fondo del botón al pasar el mouse */
+    background-color: #528d94; 
 }
 
-p {
-    color: red; /* Color del mensaje de error */
+.error-message {
+    color: red; 
+    text-align: center; 
+    margin-top: 10px; 
 }
+
+.login-page, .login-container {
+    cursor: default; /* Asegúrate de que el cursor no esté en 'none' */
+  }

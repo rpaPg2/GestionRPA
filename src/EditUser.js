@@ -1,9 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify'; // Importar ToastContainer y toast
+import 'react-toastify/dist/ReactToastify.css'; // Importar los estilos para los toast
+import Modal from 'react-modal'; // Importar Modal
 import './EditUser.css';
 
+Modal.setAppElement('#root'); // Establecer el elemento raíz
+
 const EditUser = () => {
+    const apiUrl = process.env.REACT_APP_API_URL;
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [role, setRole] = useState('user');
@@ -11,18 +17,20 @@ const EditUser = () => {
     const [nombre, setNombre] = useState('');
     const [posicion, setPosicion] = useState('');
     const [error, setError] = useState('');
-    const [successMessage, setSuccessMessage] = useState('');
+    const [successMessage, setSuccessMessage] = useState(''); // Estado para el mensaje de éxito
     const [bots, setBots] = useState([]); // Estado para los bots
     const [selectedBots, setSelectedBots] = useState([]); // Bots seleccionados para asignar/desasignar
+    const [isModalOpen, setIsModalOpen] = useState(false); // Estado para controlar el modal
+    const [isAssigning, setIsAssigning] = useState(true); // True si es asignar, false si es desasignar
     const navigate = useNavigate();
-    
+
     const params = new URLSearchParams(window.location.search);
     const userId = params.get('id');
 
     useEffect(() => {
         const fetchUserData = async () => {
             try {
-                const response = await axios.get(`http://localhost:5000/api/user-form-back?id=${userId}`);
+                const response = await axios.get(`${apiUrl}api/user-form-back?id=${userId}`);
                 const { user, config } = response.data;
 
                 setUsername(user.username);
@@ -39,8 +47,8 @@ const EditUser = () => {
 
         const fetchBots = async () => {
             try {
-                const response = await axios.get(`http://localhost:5000/api/user-bots-noy-asign?id=${userId}`); // Cambié aquí para que llame al endpoint correcto
-                setBots(response.data.bots); // Asumiendo que el backend devuelve un objeto con una clave 'bots'
+                const response = await axios.get(`${apiUrl}api/user-bots-noy-asign?id=${userId}`);
+                setBots(response.data.bots);
             } catch (error) {
                 console.error('Error al obtener los bots:', error);
                 setError('Error al cargar los bots');
@@ -63,57 +71,51 @@ const EditUser = () => {
         );
     };
 
-    const handleAssignBots = async () => {
-        if (selectedBots.length === 0) return;
-    
-        const confirmAssign = window.confirm('¿Quieres asignar estos bots?');
-        if (!confirmAssign) return;
-    
+    const handleAssignBots = () => {
+        if (selectedBots.length === 0) {
+            toast.error('Por favor, selecciona al menos un bot para asignar.');
+            return;
+        }
+        setIsAssigning(true); // Establecer modo de asignación
+        setIsModalOpen(true); // Abrir el modal
+    };
+
+    const handleUnassignBots = () => {
+        if (selectedBots.length === 0) {
+            toast.error('Por favor, selecciona al menos un bot para desasignar.');
+            return;
+        }
+        setIsAssigning(false); // Establecer modo de desasignación
+        setIsModalOpen(true); // Abrir el modal
+    };
+
+    const confirmAction = async () => {
+        setIsModalOpen(false); // Cerrar el modal
+
+        const action = isAssigning ? 'assign-bots' : 'unassign-bots';
+        const message = isAssigning ? 'Bots asignados correctamente' : 'Bots desasignados correctamente';
+
         try {
-            await axios.post('http://localhost:5000/api/assign-bots', {
+            await axios.post(`${apiUrl}api/${action}`, {
                 userId,
                 botIds: selectedBots,
             });
-            setSuccessMessage('Bots asignados correctamente.');
-            setSelectedBots([]);
-            
-            // Recargar bots para actualizar el estado
-            const response = await axios.get(`http://localhost:5000/api/user-bots-noy-asign?id=${userId}`);
-            setBots(response.data.bots); // Cambié aquí para que acceda a 'bots'
+            toast.success(message); // Mostrar notificación de éxito
+            setSelectedBots([]); // Limpiar selección de bots
+
+            // Actualizar la lista de bots después de la acción
+            const response = await axios.get(`${apiUrl}api/user-bots-noy-asign?id=${userId}`);
+            setBots(response.data.bots);
         } catch (error) {
-            console.error('Error al asignar bots:', error);
-            setError('Error al asignar bots');
+            console.error(`Error al ${action}:`, error);
+            toast.error(`Error al ${action}`);
         }
     };
-    
-    const handleUnassignBots = async () => {
-        if (selectedBots.length === 0) return;
-    
-        const confirmUnassign = window.confirm('¿Quieres desasignar estos bots?');
-        if (!confirmUnassign) return;
-    
-        try {
-            await axios.post('http://localhost:5000/api/unassign-bots', {
-                userId,
-                botIds: selectedBots,
-            });
-            setSuccessMessage('Bots desasignados correctamente.');
-            setSelectedBots([]);
-            
-            // Recargar bots para actualizar el estado
-            const response = await axios.get(`http://localhost:5000/api/user-bots-noy-asign?id=${userId}`);
-            setBots(response.data.bots); // Cambié aquí para que acceda a 'bots'
-        } catch (error) {
-            console.error('Error al desasignar bots:', error);
-            setError('Error al desasignar bots');
-        }
-    };
-    
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.put('http://localhost:5000/api/user-edit-update', {
+            await axios.put(`${apiUrl}api/user-edit-update`, {
                 id: userId,
                 username,
                 password,
@@ -152,7 +154,7 @@ const EditUser = () => {
 
             <form onSubmit={handleSubmit}>
                 <table>
-                    <tbody>
+                    <tbody className='edit-user-form'>
                         <tr>
                             <td>
                                 <input
@@ -204,19 +206,31 @@ const EditUser = () => {
                                     required
                                 />
                             </td>
+                            <td>
+                                <button type="submit" className="button">Actualizar Usuario</button>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
-                <button type="submit" className="button">Actualizar Usuario</button>
             </form>
+            <ToastContainer /> {/* Añadir ToastContainer para mostrar las notificaciones */}
 
             <h3>Asignación de Bots</h3>
+            <div className='botones-assign-delete'>
+                <td>
+                    <button onClick={handleAssignBots} className="button-Assign">Asignar Bots Seleccionados</button>
+                </td>
+                <td>
+                    <button onClick={handleUnassignBots} className="button-delete">Eliminar Asignaciones Seleccionadas</button>
+                </td>
+            </div>
+
             <table>
                 <thead>
                     <tr>
                         <th>Seleccionar</th>
                         <th>Nombre Bot</th>
-                        <th>Asignado</th>
+                        <th>Asignado/No Asignado</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -230,16 +244,50 @@ const EditUser = () => {
                                 />
                             </td>
                             <td>{bot.bot_nombre}</td>
-                            <td>{bot.isAssigned ? 'Asignado' : 'No asignado'}</td>
+                            <td className={bot.isAssigned ? 'assigned' : ''}>
+                                {bot.isAssigned ? 'Asignado' : 'No asignado'}
+                            </td>
                         </tr>
                     ))}
                 </tbody>
             </table>
-            <button onClick={handleAssignBots} className="button">Asignar Bots Seleccionados</button>
-            <button onClick={handleUnassignBots} className="button">Eliminar Asignaciones Seleccionadas</button>
+
+            {/* Modal de Confirmación */}
+          {/* Modal de Confirmación */}
+<Modal
+    isOpen={isModalOpen}
+    onRequestClose={() => setIsModalOpen(false)}
+    contentLabel="Confirmación"
+    style={{
+        content: {
+            top: '50%',
+            left: '50%',
+            right: 'auto',
+            bottom: 'auto',
+            transform: 'translate(-50%, -50%)',
+            width: '250px', // Ajustar el ancho de la ventana a 250px
+            height: 'auto', // Ajustar la altura de la ventana automáticamente
+            backgroundColor: 'rgba(255, 255, 255, 0.9)', // Fondo con transparencia
+            borderRadius: '8px', // Bordes redondeados
+            padding: '15px', // Espaciado interno
+            boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)', // Sombra
+        },
+    }}
+>
+    <h2 style={{ fontSize: '14px', margin: '0', paddingBottom: '8px' }}>
+        {isAssigning ? 'Asignar Bots' : 'Desasignar Bots'}
+    </h2>
+    <p style={{ fontSize: '12px' }}>
+        ¿Estás seguro de que deseas {isAssigning ? 'asignar' : 'desasignar'} estos bots?
+    </p>
+    <div className="modal-buttons" style={{ display: 'flex', justifyContent: 'space-between' }}>
+        <button onClick={confirmAction} className="button-confirmar">Confirmar</button>
+        <button onClick={() => setIsModalOpen(false)} className="button-cancelar">Cancelar</button>
+    </div>
+</Modal>
+
         </div>
     );
 };
 
 export default EditUser;
-

@@ -8,6 +8,7 @@ import './Historicos.css';
 import { ToastContainer, toast } from 'react-toastify';
 
 const TextFilter = ({ column }) => {
+  
   return (
     <input
       type="text"
@@ -19,19 +20,21 @@ const TextFilter = ({ column }) => {
 };
 
 const columns = [
-  { Header: 'Nombre del Bot', accessor: 'nombre_bot', Filter: TextFilter },
-  { Header: 'Nombre de Servidor', accessor: 'nombre_servidor', Filter: TextFilter },
+  
+  { Header: 'Bot Proceso', accessor: 'nombre_bot', Filter: TextFilter },
+  { Header: 'Servidor de ejecución', accessor: 'nombre_servidor', Filter: TextFilter },
   { Header: 'Usuario', accessor: 'nombre_usuario', Filter: TextFilter },
   { Header: 'Fecha de Ejecución', accessor: 'Fecha_ejecucion', Filter: TextFilter },
 ];
 
 const Historicos = () => {
+  const apiUrl = process.env.REACT_APP_API_URL;
   const [data, setData] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/ejecuciones-bot');
+        const response = await axios.get(`${apiUrl}api/ejecuciones-bot`);
         setData(response.data);
       } catch (error) {
         console.error('Error al obtener los datos:', error);

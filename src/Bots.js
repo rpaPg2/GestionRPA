@@ -5,6 +5,7 @@ import 'react-toastify/dist/ReactToastify.css'; // Importar estilos
 import './Bots.css';
 
 function Bots() {
+  const apiUrl = process.env.REACT_APP_API_URL;
   const [bots, setBots] = useState([]);
   const userId = sessionStorage.getItem('userId');
   const user = localStorage.getItem('user');
@@ -28,7 +29,7 @@ function Bots() {
       }
 
       try {
-        const response = await axios.get(`http://localhost:5000/api/bots?userId=${userId}`);
+        const response = await axios.get(`${apiUrl}api/bots?userId=${userId}`);
         console.log('Datos recibidos del backend:', response.data);
         
         // Aquí almacenamos los bots en el estado y en localStorage
@@ -55,7 +56,7 @@ function Bots() {
     console.log('Nombre de Usuario:', user);
 
     try {
-      const response = await axios.post('http://localhost:5000/api/execute-bot', {
+      const response = await axios.post(`${apiUrl}api/execute-bot`, {
         idAAServer,
         idBotAA,
         nombreBot,
@@ -83,12 +84,12 @@ function Bots() {
 
   return (
     <div className="table-container" style={{ textAlign: 'center' }}>
-      <h1 style={{ marginBottom: '20px' }}>Listado de Bots</h1>
+      <h1 style={{ marginBottom: '20px' }}>Bots Ejecutables</h1>
       <table style={{ margin: '0 auto', borderCollapse: 'collapse' }}>
         <thead>
           <tr>
-            <th>Nombre Bot</th>
-            <th>Servidor</th>
+            <th>Bot Proceso</th>
+            <th>Servidor de Ejecución</th>
             <th>Última Fecha de Ejecución</th>
             <th>Acciones</th>
           </tr>

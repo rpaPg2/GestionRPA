@@ -1,14 +1,15 @@
 .create-user-container {
-    max-width: 1000px;
-    margin: auto;
+    width: 100%; /* Ocupa el 100% del ancho del contenedor padre */
+    max-width: 1500px; /* Ancho máximo */
+    height: auto; /* Ajusta la altura automáticamente según el contenido */
+    margin: 10px auto; /* Centra el contenedor en la página */
     padding: 30px;
     border: 5px solid #ddd;
     border-radius: 5px;
     background-color: #f9f9f9; /* Color de fondo */
-    margin: 50px;
     transition: transform 0.3s ease; /* Animación suave al hacer hover */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-
+    margin-left: 10%;
 }
 
 .create-user-container:hover {
@@ -21,17 +22,11 @@
     margin-bottom: 10px;
 }
 
-.header h2 {
-    margin-left: 10px;
-}
-
 form {
     display: flex;
     flex-direction: column;
-    gap: 50px;
-    margin-bottom: 60px;
+    gap: 20px; /* Reducción de espacio para mejor diseño */
 }
-
 
 .button {
     padding: 10px;
@@ -44,13 +39,13 @@ form {
 }
 
 .regresar-button {
-    background-color: blue; /* Color de fondo para "Regresar" */
+    background-color: rgb(32, 137, 151); /* Color de fondo para "Regresar" */
     width: 10%;
     float: left;
 }
 
 .regresar-button:hover {
-    background-color: darkblue; /* Color al pasar el mouse */
+    background-color: rgb(106, 106, 155); /* Color al pasar el mouse */
 }
 
 .header::after {
@@ -65,13 +60,13 @@ form {
 }
 
 .create-user-button:hover {
-    background-color: darkgreen; /* Color al pasar el mouse */
+    background-color: rgb(103, 158, 103); /* Color al pasar el mouse */
 }
 
 .user-table {
-    width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
+    width: 100%; /* Asegura que la tabla ocupe el 100% del contenedor */
 }
 
 .user-table th,
@@ -83,7 +78,7 @@ form {
 }
 
 .user-table th {
-    background-color: #007bff; /* Color de fondo para el encabezado (puedes cambiarlo) */
+    background-color: #15b46a; /* Color de fondo para el encabezado */
     color: white; /* Color del texto */
 }
 
@@ -100,18 +95,28 @@ td {
     border: 1px solid #ccc; /* Añadir bordes para hacer que se parezca a la tabla */
 }
 
-input,
+.Filtro-usr-codemp {
+    display: flex;
+    width: 50%; /* Ancho total */
+    margin: 20px 0; /* Margen superior e inferior */
+}
+
+.Filtro-usr-codemp input {
+    flex-grow: 1; /* Permite que el input ocupe todo el espacio disponible */
+    padding: 10px; /* Espaciado interno */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Incluir padding en el ancho total */
+    font-size: 16px; /* Tamaño de texto */
+}
+
 select {
     width: 100%; /* Hacer que los campos ocupen el ancho completo */
     padding: 8px;
     box-sizing: border-box; /* Incluir padding en el ancho total */
-    padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
-   
 }
-
-
 
 .pagination {
     margin-top: 20px;
@@ -122,18 +127,61 @@ select {
 }
 
 .pagination button {
-    padding: 4px 8px; /* Ajusta el relleno si es necesario */
-    margin: 0 5px; /* Espaciado entre botones */
-    border-radius: 4px;
-    width: 10%; /* Cambiado a 20% */
-    flex-shrink: 0; /* Evitar que se expandan */
+    padding: 5px 10px; /* Ajusta el relleno si es necesario */
+    margin: 0 2px; /* Espaciado entre botones */
+    border-radius: 4px; /* Bordes redondeados */
+    width: auto; /* Cambiado a auto para adaptarse al contenido */
+    background-color: #00b34b;
+    color: white; /* Color del texto */
 }
 
 .pagination button:hover {
-    background-color: #0056b3;
+    background-color: #007bff; /* Cambia el color al pasar el mouse */
 }
 
 .pagination .active {
-    background-color: #28a745;
+    background-color: #dee2df;
     color: white;
 }
+
+
+.edit-button {
+    background-color: #219e64; /* Color de fondo azul */
+    color: white; /* Color del texto */
+    padding: 10px; /* Espaciado interno */
+    border: none; /* Sin borde */
+    border-radius: 4px; /* Bordes redondeados */
+    cursor: pointer; /* Cambiar el cursor al pasar el mouse */
+    transition: background-color 0.3s; /* Transición suave al pasar el mouse */
+}
+
+.edit-button:hover {
+    background-color: #1edb73; /* Color de fondo más oscuro al pasar el mouse */
+}
+
+.notification {
+    background-color: #d4edda; /* Color de fondo verde claro */
+    color: #155724; /* Color del texto */
+    padding: 10px;
+    margin: 20px 0;
+    border: 1px solid #c3e6cb; /* Borde */
+    border-radius: 5px; /* Bordes redondeados */
+}
+
+.button-regresar-button{
+    margin-right: 85%;
+    width: 90px;
+    background-color: green;
+
+}
+.button-create-user-button{
+
+    background-color: green;
+
+}
+
+/* Añade márgenes para evitar que las notificaciones se superpongan al contenido */
+.Toastify__toast-container {
+    margin-top: 60px; /* Ajusta esto según sea necesario */
+  }
+  

@@ -8,10 +8,11 @@ import './Dashboard.css'; // Importa el CSS
 Chart.register(...registerables);
 
 const Dashboard = () => {
+  const apiUrl = process.env.REACT_APP_API_URL;
   const [executionData, setExecutionData] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/ejecuciones-bot') // Asegúrate de ajustar la ruta a tu API
+    axios.get(`${apiUrl}api/ejecuciones-bot`) // Asegúrate de ajustar la ruta a tu API
       .then((response) => {
         setExecutionData(response.data);
       })

@@ -1,69 +1,219 @@
-/* EditUser.css */
+/* Ajustes generales */
+.edit-user-form {
+  font-size: 14px; /* Reducir el tamaño general de la fuente */
+}
 
 .edit-user-container {
-    max-width: 1100px; /* Limita el ancho del contenedor */
-    margin: 20px auto; /* Centra el contenedor */
-    padding: 10px; /* Espaciado interno */
-    border: 1px solid #ccc; /* Borde */
-    border-radius: 8px; /* Esquinas redondeadas */
-    background-color: #f9f9f9; /* Color de fondo */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra */
-  }
-  
-  .header {
-    margin-bottom: 20px; /* Espacio debajo del encabezado */
-  }
-  
-  table {
-    width: 10%; /* Hace que la tabla ocupe todo el ancho */
-  }
-  
-  td {
-    padding: 5px; /* Espacio dentro de las celdas */
-  }
-  
-  /* Aumentar el ancho de los campos de entrada */
-  input[type="text"],
-  input[type="password"],
-  select {
-    width: 10%; /* Ancho completo */
-    min-width: 150px; /* Ancho mínimo para asegurarse de que sea lo suficientemente largo */
-    max-width: 100px; /* Ancho máximo para evitar que se expanda demasiado */
-    padding: 10px; /* Espacio interno */
-    border: 1px solid #ccc; /* Borde */
-    border-radius: 4px; /* Esquinas redondeadas */
-    font-size: 16px; /* Aumentar el tamaño de la fuente */
-    transition: border-color 0.3s; /* Transición suave del color del borde */
-  }
-  
-  input[type="text"]:focus,
-  input[type="password"]:focus,
-  select:focus {
-    border-color: #66afe9; /* Color del borde al enfocarse */
-    outline: none; /* Quitar el borde por defecto */
-  }
-  
-  button {
-    background-color: #007bff; /* Color de fondo */
-    color: white; /* Color del texto */
+  padding: 20px;
+  max-width: 900px; /* Reducir el ancho máximo del contenedor */
+}
+
+.header h2 {
+  font-size: 18px; /* Tamaño de fuente más pequeño para el título */
+  margin-left: 10%; /* Ajustar la posición del título */
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.table th,
+.table td {
+  padding: 8px; /* Espaciado interno más reducido */
+  border: 1px solid #ccc;
+  text-align: left;
+  font-size: 14px; /* Reducir el tamaño del texto en la tabla */
+}
+
+form input {
+  width: 200px; /* Ancho más reducido para los campos de texto */
+  height: 30px; /* Alto más reducido para los campos */
+  padding: 8px; /* Espaciado más pequeño */
+  font-size: 14px; /* Reducir el tamaño del texto en los inputs */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+form select {
+  width: 100%; /* Hacer que los select ocupen todo el ancho */
+  padding: 8px; /* Ajustar el espaciado */
+  font-size: 14px; /* Reducir tamaño de texto */
+}
+
+form button {
+  padding: 8px 15px; /* Reducir el tamaño de los botones */
+  font-size: 14px; /* Reducir el tamaño del texto en los botones */
+  border-radius: 4px;
+}
+
+.botones-assign-delete {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 5px; /* Reducir el espacio entre botones */
+  margin-top: 10px;
+  margin-left: 5%;
+}
+
+.button-delete {
+  width: 50%;
+  margin-left: 25%;
+  background-color: red;
+}
+
+.button-Assign {
+  width: 50%;
+  margin-left: 25%;
+  background-color: rgb(24, 192, 74);
+}
+
+.button {
+  padding: 8px; /* Ajustar tamaño de los botones */
+  background-color: #2ca75b;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px; /* Reducir tamaño del texto */
+  transition: background-color 0.3s;
+}
+
+.button:hover {
+  background-color: #0056b3;
+}
+
+.error-message {
+  font-size: 14px; /* Ajustar el tamaño del mensaje de error */
+  color: red;
+}
+
+.success-message {
+  font-size: 14px; /* Ajustar el tamaño del mensaje de éxito */
+  color: green;
+}
+
+/* Ajustes para las tablas */
+form table {
+  width: 100%; /* La tabla ocupa el 100% del contenedor */
+}
+
+form table td {
+  padding: 8px; /* Reducir el espaciado en las celdas */
+}
+
+/* Asignado */
+.assigned {
+  background-color: #d4edda;
+  color: #155724;
+  font-size: 14px; /* Tamaño ajustado para el texto */
+  font-weight: bold;
+}
+
+form .button:hover {
+  background-color: #45a049;
+}
+
+
+.Toastify__toast-body {
+  color: #fff; /* Cambiar el color del texto a blanco */
+}
+
+/* Toastify - Estilos básicos para notificaciones */
+.Toastify__toast-container {
+  z-index: 9999;
+  position: fixed;
+  padding: 4px;
+  width: 350px;
+  box-sizing: border-box;
+  color: #fff;
+}
+
+.Toastify__toast--success {
+  background-color: #5194b3; /* Estilo para las notificaciones de éxito */
+}
+
+.Toastify__toast {
+  border-radius: 20px;
+  padding: 10px;
+  margin-bottom: 1rem;
+}
+
+.Toastify__toast-body {
+  margin: 0;
+  padding: 0;
+}
+
+.Toastify__close-button {
+  color: #fff;
+  opacity: 0.7;
+}
+
+.Toastify__close-button:hover {
+  opacity: 1;
+}
+
+/* Estilos para la ventana emergente */
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Centrar la ventana */
+  width: 300px; /* Ancho de la ventana */
+  max-width: 90%; /* Ancho máximo responsivo */
+  background-color: rgba(255, 255, 255, 0.9); /* Color de fondo de la ventana con transparencia */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para dar profundidad */
+  border-radius: 8px; /* Bordes redondeados */
+  z-index: 1000; /* Asegurarse de que esté por encima de otros elementos */
+  padding: 15px; /* Espaciado interno */
+  display: none; /* Ocultar por defecto */
+}
+
+/* Estilos para el título de la ventana */
+.modal-title {
+  font-size: 16px; /* Tamaño de fuente del título reducido */
+  margin: 0; /* Sin margen */
+  padding-bottom: 10px; /* Espaciado debajo del título */
+}
+
+/* Estilos para el fondo oscuro de la ventana emergente */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro semitransparente */
+  z-index: 999; /* Detrás de la ventana */
+  display: none; /* Ocultar por defecto */
+}
+
+/* Estilos para los botones */
+.button-confirmar,
+.button-cancelar {
+    width: 40%; /* Reducir el ancho de los botones */
+    padding: 6px; /* Espaciado interno para los botones */
+    margin: 4px; /* Margen entre los botones */
     border: none; /* Sin borde */
-    border-radius: 4px; /* Esquinas redondeadas */
-    padding: 10px 15px; /* Espacio interno */
-    cursor: pointer; /* Cambia el cursor a mano */
-    transition: background-color 0.3s; /* Transición suave del color de fondo */
-  }
-  
-  button:hover {
-    background-color: #0056b3; /* Color de fondo al pasar el mouse */
-  }
-  
-  .error-message {
-    color: red; /* Color del mensaje de error */
-    margin-top: 10px; /* Espacio encima del mensaje de error */
-  }
-  
-  .success-message {
-    color: green; /* Color del mensaje de éxito */
-    margin-top: 10px; /* Espacio encima del mensaje de éxito */
-  }
-  
+    border-radius: 4px; /* Bordes redondeados en los botones */
+    cursor: pointer; /* Cambia el cursor al pasar por encima */
+    font-size: 12px; /* Tamaño de fuente reducido */
+}
+
+/* Colores de los botones */
+.button-confirmar {
+    background-color:rgb(24, 192, 74); /* Color de fondo para confirmar */
+    color: white; /* Color del texto */
+}
+
+.button-cancelar {
+    background-color: red ; /* Color de fondo para cancelar */
+    color: white; /* Color del texto */
+}
+
+/* Efecto de hover para los botones */
+.button-confirmar:hover,
+.button-cancelar:hover {
+    opacity: 0.8; /* Efecto de atenuación al pasar el mouse */
+}
