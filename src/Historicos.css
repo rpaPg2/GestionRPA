@@ -1,0 +1,186 @@
+.historicos-table-wrapper {
+  opacity: 0; /* Comienza invisible */
+  transform: translateY(20px); /* Se mueve desde abajo */
+  animation: fadeInTable 0.8s ease-out forwards; /* Animación de 0.8 segundos */
+}
+
+@keyframes fadeInTable {
+  to {
+    opacity: 1; /* Se vuelve completamente visible */
+    transform: translateY(0); /* Vuelve a su posición original */
+  }
+}
+
+.table-row {
+  transition: transform 0.1s ease-in-out;
+}
+
+.table-row:hover {
+  transform: scale(1.01); /* Aumenta ligeramente el tamaño de la fila */
+}
+
+
+
+
+/* Contenedor general centrado */
+.historicos-container {
+  max-width: 1200px; /* Ancho máximo para el contenedor */
+  margin: 0% auto;
+  padding: 10px; /* Ajustar el padding */
+  text-align: center;
+  background-color: #F9F9F9;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* Título centrado */
+.historicos-title {
+  font-size: 26px; /* Aumentar el tamaño del título */
+  color: #333;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  margin-left: 500px; 
+}
+
+/* Estilos de tabla */
+.historicos-table {
+  width: 200%; /* Cambiar el ancho de la tabla a 90% */
+  margin-left: 30%; /* Centrar la tabla */
+  border-collapse: collapse;
+  background-color: white;
+  border-radius: 20px; /* Esquinas más suaves */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Ajustar el tamaño de las celdas tanto para encabezado como para contenido */
+.historicos-th, .historicos-td {
+  padding: 10px; /* Ajusta el padding a tu preferencia */
+  text-align: left;
+  border: 2px solid #b4afaf; /* Borde similar a Excel */
+  transition: background-color 0.3s; /* Transición suave para el fondo */
+  font-size: 14px; /* Ajustar el tamaño del texto si es necesario */
+  height: 0px; /* Altura de las filas */
+}
+
+.historicos-td {
+  background-color: #f9f9f9; /* Color de fondo de las celdas de datos */
+}
+
+
+.historicos-th {
+  background-color: #04ad6c; /* Color de encabezado */
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 14px; /* Tamaño del texto en encabezados */
+  font-weight: bold;
+}
+
+.table-row:hover {
+  background-color: #f1f1f1; /* Color al pasar el mouse */
+}
+
+/* Estilos para los botones de paginación */
+.historicos-pagination {
+  display: flex; /* Flexbox para alinear los botones en una fila */
+  justify-content: center; /* Centrar los botones */
+  margin: 0px 0; /* Espacio superior e inferior */
+  margin-left: 80%;
+}
+
+.historicos-pagination button {
+  padding: 5px 20px; /* Tamaño de botón más compacto */
+  font-size: 9px; /* Tamaño de fuente más pequeño */
+  color: #fff; /* Color del texto */
+  background-color: #75b43a; /* Color original */
+  border: none; /* Sin borde */
+  border-radius: 8px; /* Bordes redondeados */
+  cursor: pointer; /* Cambiar cursor al pasar el mouse */
+  transition: background-color 0.3s, transform 0.2s; /* Transiciones suaves */
+  margin: 0 4px; /* Espacio entre los botones */
+  width: 90px;
+}
+
+.historicos-pagination button:hover {
+  background-color: #389667; /* Color más oscuro al pasar el mouse */
+  transform: scale(1.05); /* Efecto de escala */
+}
+
+/* Contenedor para botones de descarga */
+.historicos-button-container {
+  display: flex;
+  justify-content: center; /* Centrar los botones */
+  margin-bottom: 20px; /* Espacio inferior */
+  
+}
+
+/* Estilos para los botones de descarga */
+.historicos-button-container button {
+  padding: 5px 9px; /* Tamaño de botón más compacto */
+  font-size: 11px; /* Tamaño de fuente más pequeño */
+  margin: 0 5px; /* Espaciado entre botones */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Transiciones suaves */
+  margin-bottom: -15px; /* Espacio inferior */
+}
+
+.historicos-button-csv {
+  background-color: #93cc5c; /* Color original para CSV */
+  color: white;
+  width: 90px;
+  
+}
+
+.historicos-button-csv:hover {
+  background-color: #0056b3; /* Color más oscuro al pasar el mouse */
+  transform: scale(1.05);
+}
+
+.historicos-button-pdf {
+  background-color: #FF0000; /* Color rojo original para PDF */
+  width: 100px;
+  color: white;
+}
+
+.historicos-button-pdf:hover {
+  background-color: #CC0000; /* Color más oscuro al pasar el mouse */
+  transform: scale(1.05);
+}
+.historicos-pagination select {
+  font-size: 12px; /* Tamaño de texto más pequeño */
+  padding: 4px 6px; /* Ajustar el espaciado interior */
+  width: auto; /* Ajusta el ancho automáticamente */
+  border-radius: 4px; /* Bordes redondeados */
+  margin-left: 10px; 
+}
+/* Estilo para la fila de filtros */
+.historicos-filter-row th {
+  padding: 5px 10px; /* Reducir el padding vertical para las celdas de filtro */
+}
+
+/* Estilo para los inputs/selectores de los filtros */
+.historicos-filter-row th input,
+.historicos-filter-row th select {
+  padding: 5px; /* Ajustar el padding dentro de los elementos de filtro */
+  font-size: 12px; /* Ajustar el tamaño de la fuente */
+  width: auto; /* Evitar que los inputs se expandan demasiado */
+  height: auto; /* Ajustar la altura de los elementos de filtro */
+  margin: 5px 0px; /* Espacio superior e inferior */
+}
+
+.table-row:active {
+  animation: pulse 0.4s;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05); /* Aumenta de tamaño ligeramente */
+  }
+  100% {
+    transform: scale(1); /* Vuelve a su tamaño original */
+  }
+}

@@ -1,0 +1,145 @@
+/* Estilo general para la tabla */
+.table-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px auto;
+  width: 80%;
+  text-align: center;
+  background-color: #f9f9f9; /* Color de fondo suave */
+  padding: 20px; /* Agregar padding alrededor */
+  border-radius: 8px; /* Bordes redondeados */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Sombra para el contenedor */
+  margin-left: 30%;
+}
+
+/* Título */
+.title {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #333; /* Color de texto más oscuro */
+}
+
+/* Ajustes de tabla */
+.bots-table {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  border-collapse: collapse;
+  border-radius: 8px;
+  overflow: hidden; /* Para evitar que el borde se muestre en las esquinas */
+}
+
+/* Estilos para los encabezados */
+.bots-table th {
+  padding: 10px;
+  background-color: #00A859; /* Color de fondo */
+  color: white;
+  text-align: center;
+  white-space: nowrap;
+  font-size: 16px; /* Tamaño de letra ajustado */
+}
+
+/* Estilo para las celdas */
+.bots-table td {
+  padding: 10px;
+  border: 1px solid #ccc;
+  text-align: center;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  font-size: 14px;
+}
+
+/* Estilo adicional para los botones */
+.execute-button {
+  padding: 8px 12px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  font-size: 14px;
+}
+
+.execute-button:hover {
+  background-color: #218838;
+  transform: scale(1.05);
+}
+
+.execute-button:active {
+  transform: scale(0.95);
+}
+
+/* Estilo para la fila sin bots */
+.no-bots {
+  text-align: center;
+  font-style: italic; /* Estilo de texto en cursiva */
+  color: #777; /* Color gris para el texto */
+}
+
+/* Ajustes de tabla */
+table {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  border-collapse: collapse;
+  animation: fadeIn 0.5s; /* Animación de entrada */
+}
+
+/* Animación de entrada */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Estilos para los encabezados */
+.table-container th {
+  padding: 10px;
+  background-color: #00A859;
+  color: white;
+  text-align: center;
+  white-space: nowrap;
+  position: relative;
+  font-size: 14px;
+}
+
+
+/* Estilo para las celdas */
+.table-container td {
+  padding: 10px;
+  border: 1px solid #ccc;
+  text-align: center;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease; /* Transiciones suaves */
+  font-size: 14px;
+}
+
+/* Animación de hover en filas */
+.table-container tr:hover {
+  background-color: #f5f5f5; /* Color de fondo al pasar el ratón */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para efecto de elevación */
+}
+
+/* Estilo adicional para los botones */
+.table-container button {
+  padding: 8px 12px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  font-size: 14px;
+}
+
+.table-container button:hover {
+  background-color: #218838;
+  transform: scale(1.05);
+}
+
+.table-container button:active {
+  transform: scale(0.95);
+}

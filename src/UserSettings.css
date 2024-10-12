@@ -1,0 +1,173 @@
+/* Contenedor principal con estilo moderno */
+.user-settings-container {
+  position: absolute; /* Permite el posicionamiento absoluto */
+  top: 150px; /* Ajustar según tu preferencia */
+  left: 400px; /* Ajustar según tu preferencia */
+  max-width: 800px; /* Ancho máximo del contenedor */
+  padding: 30px; /* Espacio interno */
+  background-color: #ffffff; /* Color de fondo */
+  border-radius: 10px; /* Bordes redondeados */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+  transition: all 0.3s ease; /* Añadir transiciones */
+  font-family: 'Arial', sans-serif; /* Fuente más profesional */
+  color: #333; /* Color de texto más oscuro para mejor legibilidad */
+}
+
+/* Estilo del título */
+.user-settings-container h1 {
+  text-align: center; /* Centrado */
+  font-size: 28px; /* Tamaño de fuente del título */
+  font-weight: bold; /* Negrita */
+  margin-bottom: 20px; /* Espacio debajo del título */
+  color: #1e9cc2; /* Color del título */
+}
+
+/* Estilo de la tabla */
+.user-settings-container table {
+  width: 100%; /* Ajusta al 100% del contenedor */
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+/* Estilo de celdas */
+.user-settings-container th,
+.user-settings-container td {
+  padding: 15px; /* Espaciado interno */
+  border: 1px solid #e0e0e0; /* Bordes de las celdas */
+  text-align: left; /* Alinear texto a la izquierda */
+}
+
+/* Estilo de encabezado */
+.user-settings-container th {
+  background-color: #379657; /* Color de fondo de encabezado */
+  color: #ffffff; /* Color de texto de encabezado */
+  font-weight: bold; /* Negrita para encabezados */
+}
+
+/* Efecto de hover en filas */
+.user-settings-container tr:hover {
+  background-color: #f9f9f9; /* Color al pasar el mouse sobre la fila */
+}
+
+/* Estilo de campos de entrada */
+.input-field {
+  width: calc(100% - 20px); /* Asegúrate de que ocupe todo el ancho de su contenedor */
+  padding: 10px; /* Espaciado interno */
+  margin-top: 5px; /* Margen superior */
+  border: 1px solid #ccc; /* Borde de campo */
+  border-radius: 4px; /* Bordes redondeados */
+  box-sizing: border-box; /* Asegura que el padding no aumente el tamaño total */
+}
+
+/* Estilo de botones */
+.btn {
+  background-color: #1e9cc2; /* Color de fondo del botón */
+  color: white; /* Color de texto */
+  border: none; /* Sin borde */
+  padding: 10px 15px; /* Espaciado interno */
+  border-radius: 4px; /* Bordes redondeados */
+  cursor: pointer; /* Cambiar cursor al pasar por encima */
+  font-size: 16px; /* Tamaño de fuente del botón */
+  transition: background-color 0.3s, transform 0.3s; /* Transición suave para el fondo */
+}
+
+/* Efecto hover en el botón de guardar */
+.btn:hover {
+  background-color: #379657; /* Color de fondo al pasar el mouse */
+  transform: translateY(-2px); /* Eleva ligeramente el botón */
+}
+
+/* Estilo específico para el botón de cancelar */
+.btn-cancel {
+  background-color: #e74c3c; /* Color rojo para el botón de cancelar */
+}
+
+/* Efecto hover en el botón de cancelar */
+.btn-cancel:hover {
+  background-color: #c0392b; /* Color más oscuro al pasar el mouse */
+  transform: translateY(-2px); /* Eleva ligeramente el botón */
+}
+
+/* Estilo de etiqueta */
+label {
+  display: block; /* Mostrar como bloque */
+  margin-top: 10px; /* Margen superior */
+  font-weight: bold; /* Negrita para etiquetas */
+}
+
+/* Estilo para los inputs de contraseña y texto */
+input[type="password"],
+input[type="text"] {
+  width: 100%; /* Asegúrate de que ocupe todo el ancho de su contenedor */
+  padding: 10px; /* Espaciado interno */
+  margin-bottom: 10px; /* Espaciado inferior para separar de otros elementos */
+  border: 1px solid #ccc; /* Borde de campo */
+  border-radius: 4px; /* Bordes redondeados */
+  box-sizing: border-box; /* Asegura que el padding no aumente el tamaño total */
+}
+
+/* Estilo del botón de cambiar contraseña */
+button {
+  margin-top: 4px; /* Espacio encima del botón */
+  padding: 10px; /* Espaciado interno del botón */
+  background-color: #1e9cc2; /* Color de fondo del botón */
+  color: white; /* Color de texto */
+  border: none; /* Sin borde */
+  border-radius: 4px; /* Bordes redondeados */
+  cursor: pointer; /* Cambiar cursor al pasar por encima */
+  transition: background-color 0.3s; /* Transición suave para el fondo */
+}
+
+/* Efecto hover en el botón de cambiar contraseña */
+button:hover {
+  background-color: #379657; /* Color de fondo al pasar el mouse */
+}
+
+/* Ajustes de móviles */
+@media (max-width: 768px) {
+  .user-settings-container {
+    padding: 20px; /* Espacio interno */
+    max-width: 90%; /* Asegura que no se exceda el ancho de la pantalla */
+    left: 5%; /* Ajustar el posicionamiento */
+  }
+
+  /* Cambia tamaños de fuente en pantallas pequeñas */
+  .user-settings-container h1 {
+    font-size: 24px; /* Tamaño de fuente del título */
+  }
+}
+
+
+.alert {
+  padding: 15px; /* Cambié a 15px para mantener la consistencia */
+  margin: 10px 0;
+  border-radius: 5px;
+  position: relative; /* Para posicionar el botón de cerrar */
+  font-size: 16px; /* Agregado para que el tamaño de fuente sea consistente */
+}
+
+.alert.success {
+  background-color: #d4edda; /* Fondo verde claro */
+  color: #155724; /* Texto verde oscuro */
+  border: 1px solid #c3e6cb; /* Borde verde */
+}
+
+.alert.error {
+  background-color: #f8d7da; /* Fondo rojo claro */
+  color: #721c24; /* Texto rojo oscuro */
+  border: 1px solid #f5c6cb; /* Borde rojo */
+}
+
+.close-btn {
+  position: absolute; /* Para posicionar el botón en la esquina */
+  top: 5px;
+  right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: inherit; /* Hereda el color del mensaje */
+}
+
+.close-btn:hover {
+  text-decoration: underline; /* Subrayar al pasar el mouse */
+}

@@ -1,0 +1,228 @@
+/* App.css */
+.App {
+  font-family: sans-serif;
+  text-align: center;
+  position: absolute;
+  display: flex;
+  height: 100vh; 
+}
+
+.dashboard-container {
+  display: flex;
+  height: 100vh;
+  position: relative; /* Asegura que el contenedor tenga contexto de posicionamiento */
+  z-index: 1; /* Para que el contenedor esté por encima del video */
+}
+
+.sidebar {
+  width: 200px;
+  height: 100vh;
+  background-color: #5b337b; /* Color de fondo del sidebar */
+  padding: 20px;
+  color: #ffffff; /* Texto en blanco */
+  text-align: left;
+  position: relative; /* Asegura que el sidebar esté en la jerarquía correcta */
+  z-index: 2; /* Asegura que el sidebar esté por encima del video */
+}
+
+.sidebar h2 {
+  color: #228bb6; /* Color de los encabezados */
+  transition: background-color 0.3s ease;
+}
+.sidebar h2:hover {
+  background-color: #f7f8fa; /* Color de fondo al pasar el mouse */
+}
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  margin: 10px 0;
+  position: relative; /* Para posicionar el rectángulo */
+}
+
+.sidebar li a {
+  text-decoration: none; /* Eliminar el subrayado */
+  color: #ffffff; /* Color del texto por defecto */
+  padding: 10px; /* Espaciado interno del enlace */
+  display: block; /* Hacer que el enlace ocupe todo el ancho del contenedor */
+  transition: background-color 0.3s; /* Transición para el color de fondo */
+  background-color: rgba(255, 255, 255, 0.1); /* Fondo transparente */
+  border: 1px solid transparent; /* Bordes transparentes por defecto */
+  border-radius: 5px; /* Bordes redondeados */
+}
+
+.sidebar li a:hover {
+  background-color: rgba(255, 255, 255, 0.2); /* Color de fondo al pasar el mouse */
+  border: 1px solid #228bb6; /* Bordes en color azul al pasar el mouse */
+}
+
+/* Estilos para las subopciones */
+.submenu {
+  list-style: none;
+  padding-left: 20px; /* Indentación para subopciones */
+}
+
+.submenu li {
+  margin: 5px 0; /* Espaciado entre subopciones */
+}
+
+.submenu li a {
+  background-color: transparent; /* Sin color de fondo para subopciones */
+  color: #ddd; /* Color más claro para subopciones */
+  padding-left: 15px; /* Espacio a la izquierda para subopciones */
+}
+
+.submenu li a:hover {
+  background-color: #444; /* Color de fondo al pasar el mouse */
+}
+
+/* Estilo específico para el símbolo en submenús */
+.submenu li a::before {
+  content: '• '; /* Agregar el símbolo '•' antes del texto */
+  color: #61dafb; /* Cambiar el color del símbolo si lo deseas */
+}
+
+/* Estilo para mensajes de éxito */
+.success-message {
+  background-color: #04ad6c; /* Mensaje de éxito */
+  color: #ffffff; /* Texto en blanco */
+  padding: 10px;
+  border-radius: 5px;
+}
+
+/* Estilo para advertencias */
+.warning-message {
+  background-color: #93cc5c; /* Mensaje de advertencia */
+  color: #5b337b; /* Texto en el color de fondo de advertencia */
+  padding: 10px;
+  border-radius: 5px;
+}
+
+/* Texto general */
+body {
+  color: #85749b; /* Color del texto general */
+  font-family: 'Roboto', sans-serif;
+
+}
+
+/* Estilo de botones primarios */
+button.primary {
+  background-color: #93cc5c; /* Botón primario */
+  color: #ffffff; /* Texto en blanco */
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button.primary:hover {
+  background-color: #6dd2b5; /* Color al pasar el mouse */
+}
+
+/* Estilo de botones secundarios */
+button.secondary {
+  background-color: #04ad6c; /* Botón secundario */
+  color: #ffffff; /* Texto en blanco */
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button.secondary:hover {
+  background-color: #93cc5c; /* Color al pasar el mouse */
+}
+.content {
+
+  position: relative; /* Para asegurarte de que el contenido esté sobre el video */
+  z-index: 2; /* Asegura que el contenido esté por encima del video */
+  padding: 20px; /* Espacio al contenido */
+}
+
+/* Estilo para el video de fondo */
+.background-video {
+  position: fixed; /* Asegura que el video ocupe toda la ventana */
+  top: 50%; /* Centrar verticalmente */
+  left: 60%; /* Centrar horizontalmente */
+  width: 65%; /* Ajusta el ancho al 100% */
+  height: 90%; /* Ajusta la altura al 100% */
+  transform: translate(-50%, -50%); /* Centrar el video */
+  object-fit: cover; /* Cubrir el área sin distorsionar la imagen */
+  z-index: 0; /* Asegura que esté detrás de los demás elementos */
+  filter: brightness(1) contrast(1) opacity(0.95); /* Ajustar brillo, contraste y opacidad */
+}
+
+/* Bienvenida.js */
+.title-container {
+  position: absolute; /* Posición absoluta para superponerlo en el video */
+  top: 25%; /* Centrar verticalmente */
+  left: 170%; /* Centrar horizontalmente */
+  transform: translate(-50%, -50%); /* Ajuste para centrar en ambas direcciones */
+  font-size: 2.5em; /* Tamaño de fuente mayor */
+  color: #ffffff; /* Color de texto blanco */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Sombra para mejorar la legibilidad */
+  background: rgba(3, 129, 34, 0.3); /* Fondo semi-transparente */
+  padding: 20px; /* Espaciado alrededor del texto */
+  border-radius: 20px; /* Bordes redondeados */
+  animation: fadeInUp 3s forwards; /* Aplica la animación */
+  animation-delay: 0.0s; /* Retraso antes de iniciar la animación */
+ 
+
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -80px); /* Mueve el texto hacia arriba */
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%); /* Termina en su posición centrada */
+  }
+}
+
+
+/* Contenedor principal */
+.bienvenida-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f7f7f7; /* Un ligero gris claro para diferenciar el fondo */
+  padding: 20px;
+  font-family: 'Roboto', sans-serif;
+  background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.8), rgba(247, 247, 247, 1));
+  box-shadow: 0 4px 2px rgba(0, 0, 0, 0.2);
+
+
+}
+
+@media (max-width: 600px) {
+  .bienvenida-container {
+    padding: 10px;
+    font-size: 1.5em; /* Ajusta el tamaño de fuente para pantallas pequeñas */
+  }
+}
+
+/* Contenido centrado */
+.content-overlay {
+  text-align: center;
+  padding: 40px;
+  background-color: #ffffff;
+  border-radius: 8px; /* Bordes suaves */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Sombra sutil para darle profundidad */
+}
+
+
+
+/* Para pequeños detalles como el footer o créditos */
+.footer {
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #777; /* Texto gris claro */
+}

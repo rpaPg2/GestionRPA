@@ -1,0 +1,139 @@
+.create-user-container {
+    max-width: 1000px;
+    margin: auto;
+    padding: 30px;
+    border: 5px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9; /* Color de fondo */
+    margin: 50px;
+    transition: transform 0.3s ease; /* Animación suave al hacer hover */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+}
+
+.create-user-container:hover {
+    transform: scale(1.01); /* Efecto de escala al pasar el ratón */
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.header h2 {
+    margin-left: 10px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    margin-bottom: 60px;
+}
+
+
+.button {
+    padding: 10px;
+    font-size: 14px;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    transition: background-color 0.3s; /* Transición suave */
+}
+
+.regresar-button {
+    background-color: blue; /* Color de fondo para "Regresar" */
+    width: 10%;
+    float: left;
+}
+
+.regresar-button:hover {
+    background-color: darkblue; /* Color al pasar el mouse */
+}
+
+.header::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.create-user-button {
+    background-color: green; /* Color de fondo para "Crear Usuario" */
+    width: 100%;
+}
+
+.create-user-button:hover {
+    background-color: darkgreen; /* Color al pasar el mouse */
+}
+
+.user-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.user-table th,
+.user-table td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd; /* Bordes de celdas */
+    transition: background-color 0.01s ease; /* Transición para animación */
+}
+
+.user-table th {
+    background-color: #007bff; /* Color de fondo para el encabezado (puedes cambiarlo) */
+    color: white; /* Color del texto */
+}
+
+.user-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.user-table tr:hover {
+    background-color: #e9ecef;
+}
+
+td {
+    padding: 8px;
+    border: 1px solid #ccc; /* Añadir bordes para hacer que se parezca a la tabla */
+}
+
+input,
+select {
+    width: 100%; /* Hacer que los campos ocupen el ancho completo */
+    padding: 8px;
+    box-sizing: border-box; /* Incluir padding en el ancho total */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+   
+}
+
+
+
+.pagination {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Permitir que los botones se distribuyan en varias filas */
+    min-width: 500px; /* Ajusta según tus necesidades */
+}
+
+.pagination button {
+    padding: 4px 8px; /* Ajusta el relleno si es necesario */
+    margin: 0 5px; /* Espaciado entre botones */
+    border-radius: 4px;
+    width: 10%; /* Cambiado a 20% */
+    flex-shrink: 0; /* Evitar que se expandan */
+}
+
+.pagination button:hover {
+    background-color: #0056b3;
+}
+
+.pagination .active {
+    background-color: #28a745;
+    color: white;
+}
