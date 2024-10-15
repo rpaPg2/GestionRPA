@@ -13,7 +13,7 @@ const ListBots = () => {
   useEffect(() => {
     const fetchBots = async () => {
       try {
-        const response = await fetch(`gestion-rpa-backend.vercel.app/api/bots-disponibles`);
+        const response = await fetch(`https://fronted-gestion-rpa.vercel.app/api/bots-disponibles`);
         const data = await response.json();
         setBots(data);
       } catch (error) {
