@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'; // Importa useNavigate
 import './ListBots.css';
 
 const ListBots = () => {
-  const apiUrl = process.env.REACT_APP_API_URL;
+ 
   const [bots, setBots] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [hoveredRowIndex, setHoveredRowIndex] = useState(null);
@@ -13,7 +13,7 @@ const ListBots = () => {
   useEffect(() => {
     const fetchBots = async () => {
       try {
-        const response = await fetch(`${apiUrl}api/bots-disponibles`);
+        const response = await fetch(`http://localhost:5000/api/bots-disponibles`);
         const data = await response.json();
         setBots(data);
       } catch (error) {

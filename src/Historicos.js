@@ -28,13 +28,13 @@ const columns = [
 ];
 
 const Historicos = () => {
-  const apiUrl = process.env.REACT_APP_API_URL;
+
   const [data, setData] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`${apiUrl}api/ejecuciones-bot`);
+        const response = await axios.get(`http://localhost:5000/api/ejecuciones-bot`);
         setData(response.data);
       } catch (error) {
         console.error('Error al obtener los datos:', error);
