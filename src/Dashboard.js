@@ -11,7 +11,7 @@ const Dashboard = () => {
   const [executionData, setExecutionData] = useState([]);
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/api/ejecuciones-bot`) // Asegúrate de ajustar la ruta a tu API
+    axios.get(`gestion-rpa-backend.vercel.app/api/ejecuciones-bot`) // Asegúrate de ajustar la ruta a tu API
       .then((response) => {
         setExecutionData(response.data);
       })

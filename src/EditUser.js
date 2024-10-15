@@ -30,7 +30,7 @@ const EditUser = () => {
     useEffect(() => {
         const fetchUserData = async () => {
             try {
-                const response = await axios.get(`http://localhost:5000/api/user-form-back?id=${userId}`);
+                const response = await axios.get(`gestion-rpa-backend.vercel.app/api/user-form-back?id=${userId}`);
                 const { user, config } = response.data;
 
                 setUsername(user.username);
@@ -47,7 +47,7 @@ const EditUser = () => {
 
         const fetchBots = async () => {
             try {
-                const response = await axios.get(`http://localhost:5000/api/user-bots-noy-asign?id=${userId}`);
+                const response = await axios.get(`gestion-rpa-backend.vercel.app/api/user-bots-noy-asign?id=${userId}`);
                 setBots(response.data.bots);
             } catch (error) {
                 console.error('Error al obtener los bots:', error);
@@ -96,7 +96,7 @@ const EditUser = () => {
         const message = isAssigning ? 'Bots asignados correctamente' : 'Bots desasignados correctamente';
 
         try {
-            await axios.post(`http://localhost:5000/api/${action}`, {
+            await axios.post(`gestion-rpa-backend.vercel.app/api/${action}`, {
                 userId,
                 botIds: selectedBots,
             });
@@ -104,7 +104,7 @@ const EditUser = () => {
             setSelectedBots([]); // Limpiar selección de bots
 
             // Actualizar la lista de bots después de la acción
-            const response = await axios.get(`http://localhost:5000/api/user-bots-noy-asign?id=${userId}`);
+            const response = await axios.get(`gestion-rpa-backend.vercel.app/api/user-bots-noy-asign?id=${userId}`);
             setBots(response.data.bots);
         } catch (error) {
             console.error(`Error al ${action}:`, error);
@@ -115,7 +115,7 @@ const EditUser = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.put(`http://localhost:5000/api/user-edit-update`, {
+            await axios.put(`gestion-rpa-backend.vercel.app/api/user-edit-update`, {
                 id: userId,
                 username,
                 password,

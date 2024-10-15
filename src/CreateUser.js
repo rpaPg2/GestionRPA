@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import './CreateUser.css';
 
 const CreateUser = () => {
-  const apiUrl = process.env.REACT_APP_API_URL;
+
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [role, setRole] = useState('user'); // Valor por defecto
@@ -25,7 +25,7 @@ const CreateUser = () => {
 
     try {
       // Enviar los datos a la API para crear el usuario
-      await axios.post(`http://localhost:5000/api/usuarios-crear`, {
+      await axios.post(`gestion-rpa-backend.vercel.app/api/usuarios-crear`, {
         username,
         password,
         role,
@@ -55,7 +55,7 @@ const CreateUser = () => {
   const fetchUsuarios = async () => {
     try {
       // Usar la ruta de listar usuarios
-      const response = await axios.get(`http://localhost:5000/api/listar-tabla-user`);
+      const response = await axios.get(`gestion-rpa-backend.vercel.app/api/listar-tabla-user`);
       setUsuarios(response.data);
     } catch (error) {
       console.error('Error al cargar usuarios:', error);

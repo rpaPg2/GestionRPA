@@ -16,7 +16,7 @@ const UserSettings = () => {
    
     const fetchUserInfo = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/api/user-info?userId=${userId}`);
+        const response = await fetch(`gestion-rpa-backend.vercel.app/api/user-info?userId=${userId}`);
         if (response.ok) {
           const data = await response.json();
           setUserInfo(data);
@@ -48,7 +48,7 @@ const UserSettings = () => {
     setIsButtonDisabled(true); // Desactivar el botón mientras se procesa la solicitud
 
     try {
-      const response = await fetch(`http://localhost:5000/api/change-password`, {
+      const response = await fetch(`gestion-rpa-backend.vercel.app/api/change-password`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

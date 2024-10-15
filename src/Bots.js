@@ -29,7 +29,7 @@ function Bots() {
       }
 
       try {
-        const response = await axios.get(`http://localhost:5000/api/bots?userId=${userId}`);
+        const response = await axios.get(`gestion-rpa-backend.vercel.app/api/bots?userId=${userId}`);
         console.log('Datos recibidos del backend:', response.data);
         
         // Aquí almacenamos los bots en el estado y en localStorage
@@ -56,7 +56,7 @@ function Bots() {
     console.log('Nombre de Usuario:', user);
 
     try {
-      const response = await axios.post(`http://localhost:5000/api/execute-bot`, {
+      const response = await axios.post(`gestion-rpa-backend.vercel.app/api/execute-bot`, {
         idAAServer,
         idBotAA,
         nombreBot,
