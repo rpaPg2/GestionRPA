@@ -12,7 +12,7 @@ const Login = () => {
     e.preventDefault(); // Prevenir el comportamiento predeterminado del formulario
     setLoading(true); // Activa el estado de carga
     try {
-      const response = await axios.get(`https://fronted-gestion-rpa.vercel.app/login`, {
+      const response = await axios.get(`https://gestion-rpa-backend.vercel.app/login`, {
         params: { usuario, password },
       });
   

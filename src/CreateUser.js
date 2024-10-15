@@ -25,7 +25,7 @@ const CreateUser = () => {
 
     try {
       // Enviar los datos a la API para crear el usuario
-      await axios.post(`https://fronted-gestion-rpa.vercel.app/api/usuarios-crear`, {
+      await axios.post(`https://gestion-rpa-backend.vercel.app/api/usuarios-crear`, {
         username,
         password,
         role,
@@ -55,7 +55,7 @@ const CreateUser = () => {
   const fetchUsuarios = async () => {
     try {
       // Usar la ruta de listar usuarios
-      const response = await axios.get(`https://fronted-gestion-rpa.vercel.app/api/listar-tabla-user`);
+      const response = await axios.get(`https://gestion-rpa-backend.vercel.app/api/listar-tabla-user`);
       setUsuarios(response.data);
     } catch (error) {
       console.error('Error al cargar usuarios:', error);
