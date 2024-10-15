@@ -3,7 +3,7 @@ import axios from 'axios';
 import './Login.css'; // Asegúrate de que la ruta sea correcta
 
 const Login = () => {
-  const apiUrl = process.env.REACT_APP_API_URL;
+
   const [usuario, setUsuario] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -13,7 +13,7 @@ const Login = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      const response = await axios.post(`${apiUrl}login`, { usuario, password }); // Usar POST
+      const response = await axios.post(`https://gestion-rpa-backend.vercel.app/login`, { usuario, password }); // Usar POST
   
       if (response.data.message === 'Inicio de sesión exitoso') {
         sessionStorage.setItem('userId', response.data.userId);
@@ -40,13 +40,7 @@ const Login = () => {
       setLoading(false);
     }
   };
-  
 
-
-
-
-
-  
   return (
     <div className="login-page">
       <div className="login-container">
